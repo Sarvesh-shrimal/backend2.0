@@ -1,5 +1,5 @@
 const express = require('express');
-const hey = require("give-me-a-joke")
+const hey = require("give-me-a-joke");
 const app = express();
 const PORT = process.env.PORT || 8080;;
 
@@ -17,10 +17,12 @@ app.get('/api/data', (req, res) => {
 });
 
 app.get('/joke', (req, res) =>{
-  res.json()
+  hey.getRandomDadJoke((joke) => {
+    res.json({ joke })
+  }) 
 })
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${5000}/hello`);
+  console.log(`✅ Server running at http://localhost:${PORT}/hello`);
 });
